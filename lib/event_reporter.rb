@@ -1,19 +1,11 @@
 require_relative 'help'
+require 'pry'
 
 class EventReporter
 
   def initialize
     puts "Event Reporter Intializing..."
     @helper = Help.new
-  end
-
-  def process_command(command, arguments)
-    case command
-    when 'load'
-      #do STUFF
-    when 'help'
-      @helper.help(arguments)
-    end
   end
 
   def run
@@ -26,8 +18,21 @@ class EventReporter
       args = input.split(" ")
       command = args.first
       arguments = args[1..-1].join(" ")
-      
+      binding.pry
       process_command(command, arguments)
+    end
+  end
+
+  def process_command(command, arguments)
+    case command
+    when 'load'
+      @loader.load(arguments)
+    when 'help'
+      @helper.help(arguments)
+    when 'queue'
+      #DO SOMETHING
+    when 'find'
+      #DO SOMETHING
     end
   end
 

@@ -2,11 +2,13 @@ require 'csv'
 
 class Loader
 
-  def load(filename = "./event_attendees.csv")
-  
-    CSV.open(filename, headers: true, header_converters: :symbol)
-
+  def initialize
+    @default_file = 'event_attendees.csv'
   end
 
+  def load(filename)
+    CSV.open(filename, headers: true, header_converters: :symbol)
+    puts "Your File is open"
+  end
 
 end
