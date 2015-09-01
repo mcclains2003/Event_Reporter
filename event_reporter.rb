@@ -1,7 +1,10 @@
+require_relative 'help'
+
 class EventReporter
 
   def initialize
     puts "Event Reporter Intializing..."
+    @helper = Help.new
   end
 
   def process_command(command, arguments)
@@ -9,22 +12,26 @@ class EventReporter
     when 'load'
       #do STUFF
     when 'help'
-      #do OTHER STUFF
+      if arguments == nil
+        @helper.help_list
+      else
+        @helper.help_desc(arguments)
+      end
     end
   end
 
-  def run_ev_reporter
+  def run
     puts "Welcome to Event Reporter!"
-    input = ""
+    command = ""
     while command != 'quit'
       printf "Please enter a command: "
       input = gets.chomp
 
       args = input.split(" ")
       command = args.first
-      arguments = arg[1..-1]
+      arguments = args[1..-1]
 
-      process_command(command, arguments)
+      process_command(command, arguments = nil)
     end
   end
 
