@@ -1,4 +1,5 @@
 require_relative 'help'
+require 'pry'
 
 class EventReporter
 
@@ -12,11 +13,7 @@ class EventReporter
     when 'load'
       #do STUFF
     when 'help'
-      if arguments == nil
-        @helper.help_list
-      else
-        @helper.help_desc(arguments)
-      end
+      @helper.help(arguments)
     end
   end
 
@@ -29,9 +26,9 @@ class EventReporter
 
       args = input.split(" ")
       command = args.first
-      arguments = args[1..-1]
-
-      process_command(command, arguments = nil)
+      arguments = args[1..-1].join(" ")
+      
+      process_command(command, arguments)
     end
   end
 

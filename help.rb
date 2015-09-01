@@ -1,6 +1,17 @@
+require 'pry'
+
 class Help
 
-  def help_list
+  def help(arguments)
+    if arguments != ""
+      help_desc(arguments)
+    else
+      help_list
+    end
+  end
+
+
+  def help_list    
     puts "LIST OF COMMANDS".center(30, "*")
     puts "help".center(30)
     puts "help <command>".center(30)
@@ -27,6 +38,7 @@ class Help
       puts "#{arguments}: will export the current queue to the specified filename as a CSV file."
     when 'find'
       puts "#{arguments}: will load the queue with all records matching the criteria."
+    end
   end
 
 end
