@@ -4,6 +4,15 @@ class EventReporter
     puts "Event Reporter Intializing..."
   end
 
+  def process_command(command, arguments)
+    case command
+    when 'load'
+      #do STUFF
+    when 'help'
+      #do OTHER STUFF
+    end
+  end
+
   def run_ev_reporter
     puts "Welcome to Event Reporter!"
     input = ""
@@ -16,15 +25,6 @@ class EventReporter
       arguments = arg[1..-1]
 
       process_command(command, arguments)
-    end
-  end
-
-  def process_command(command, arguments)
-    case command
-    when SOMETHING
-      #do STUFF
-    when SOMETHING ELSE
-      #do OTHER STUFF
     end
   end
 
