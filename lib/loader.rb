@@ -7,8 +7,11 @@ class Loader
   end
 
   def load(filename)
-    CSV.open(filename, headers: true, header_converters: :symbol)
-    puts "Your File is open"
+    if File.exists?(filename)
+      CSV.read(filename, headers: true, header_converters: :symbol)
+    else
+      CSV.read(@default_file, headers: true, header_converters: :symbol)
+    end
   end
 
 end

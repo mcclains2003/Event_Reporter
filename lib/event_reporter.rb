@@ -1,4 +1,5 @@
 require_relative 'help'
+require_relative 'loader'
 require 'pry'
 
 class EventReporter
@@ -6,6 +7,7 @@ class EventReporter
   def initialize
     puts "Event Reporter Intializing..."
     @helper = Help.new
+    @loader = Loader.new
   end
 
   def run
@@ -18,7 +20,7 @@ class EventReporter
       args = input.split(" ")
       command = args.first
       arguments = args[1..-1].join(" ")
-      binding.pry
+
       process_command(command, arguments)
     end
   end
