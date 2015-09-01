@@ -1,5 +1,4 @@
 require_relative 'help'
-require 'pry'
 
 class EventReporter
 

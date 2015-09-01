@@ -1,9 +1,10 @@
-require 'pry'
-
 class Help
 
   def help(arguments)
-    if arguments != ""
+    valid = ["queue count", "queue clear", "queue print", "find",
+    "queue print by", "queue save to"]
+
+    if valid.include?(arguments)
       help_desc(arguments)
     else
       help_list
@@ -27,7 +28,7 @@ class Help
   def help_desc(arguments)
     case arguments
     when 'queue count'
-      puts "#{arguments}: will output how many records are in the current queue."
+      puts "#{arguments.upcase}: will output how many records are in the current queue."
     when 'queue clear'
       puts "#{arguments}: will empty the queue."
     when 'queue print'
